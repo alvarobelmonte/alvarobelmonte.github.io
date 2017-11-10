@@ -994,12 +994,12 @@ body {
   z-index: 9000;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s; }
-  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
-    .popup {
-      -webkit-backdrop-filter: blur(30px);
-      backdrop-filter: blur(10px);
-      background-color: rgba(0, 0, 0, 0.3); } }
+  transition: all 0.3s;
+  /*@supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(10px);
+    background-color: rgba($color-black, 0.3);
+  }*/ }
   .popup:target {
     opacity: 1;
     visibility: visible; }
