@@ -9,8 +9,11 @@
   --color-text: #a5a7ba;
   --color-text-nav: #3c3f42;
   --color-white: #e6e2dd;
+  --color-nav: #F1F1F1;
+  --color-gradient-1: #30cfd0;
+  --color-gradient-2: #330867;
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.5);
-  --shadow-dark-2: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 2rem 6rem rgba(0, 0, 0, 0.3);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.1); }
 
 /* BREAKPOINTS */
@@ -43,12 +46,12 @@ $breakpoint argument choices:
 html,
 body {
   height: 100%;
-  font-size: 30%;
+  font-size: 50%;
   color: var(--color-text); }
   @media only screen and (min-width: 31.25em) {
     html,
     body {
-      font-size: 40%; } }
+      font-size: 55%; } }
   @media only screen and (min-width: 45em) {
     html,
     body {
@@ -82,6 +85,7 @@ body {
       flex-direction: row; } }
 
 aside {
+  background-color: var(--color-nav);
   flex: 1 0 10%;
   display: flex;
   flex-direction: column; }
@@ -107,13 +111,18 @@ header {
 
 .img {
   background-color: red;
-  border-radius: 120rem;
+  border-radius: 2rem;
   width: 15rem;
   height: 15rem;
-  box-shadow: var(--shadow-dark-2);
-  transition: all 1s; }
+  box-shadow: var(--shadow-medium);
+  transition: all 0.5s; }
   .img:hover {
-    transform: translateY(-2rem); }
+    transform: scale(0.8, 0.8);
+    border-radius: 120rem; }
+  @media only screen and (min-width: 120em) {
+    .img {
+      width: 18rem;
+      height: 18rem; } }
 
 .header-social {
   flex: 1 0 30%;
@@ -141,18 +150,29 @@ header {
       margin-left: 2rem;
       margin-right: 2rem;
       margin-bottom: 2rem; } }
+  @media only screen and (min-width: 120em) {
+    .header-social li {
+      margin-left: 3rem;
+      margin-right: 3rem;
+      margin-bottom: 3rem; } }
 
 .header-social li i {
-  color: #113C4A;
+  color: var(--color-gradient-2);
   font-size: 3rem;
-  text-shadow: var(--shadow-dark);
   transition: all 0.4s; }
   .header-social li i:hover {
-    color: #3F7B70;
-    transform: scale(1.5); }
-  @media only screen and (min-width: 80em) {
+    color: var(--color-gradient-1);
+    transform: scale(1.5);
+    text-shadow: var(--shadow-medium); }
+  @media only screen and (min-width: 64em) {
     .header-social li i {
       font-size: 4rem; } }
+  @media only screen and (min-width: 80em) {
+    .header-social li i {
+      font-size: 4.5rem; } }
+  @media only screen and (min-width: 120em) {
+    .header-social li i {
+      font-size: 5rem; } }
 
 nav {
   font-size: 2rem;
@@ -204,7 +224,7 @@ main {
   font-size: 3rem;
   flex: 1 0 90%;
   position: relative;
-  background-color: rgba(129, 194, 255, 0.7);
+  background-image: linear-gradient(to right bottom, rgba(48, 207, 208, 0.5), rgba(51, 8, 103, 0.5));
   color: white;
   text-align: center;
   display: flex;
