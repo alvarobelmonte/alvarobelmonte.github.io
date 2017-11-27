@@ -8,17 +8,84 @@
 
 :root {
   --color-text: #a5a7ba;
+  --color-text-nav: #3c3f42;
   --color-white: #e6e2dd;
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.5);
   --shadow-dark-2: 0 2rem 6rem rgba(0, 0, 0, 0.3);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.1);
 }
 
+
+/* BREAKPOINTS */
+/*
+300-500
+720-770
+1024
+1280
+1600
+1920
+*/
+
+//MEDIA QUERY MANAGER
+/*
+0 - 600px: Pjone
+600 - 900px: Tablet portrait
+900 - 1200px: Tablet landscape
+[1200 1800px] is where normal styles apply
+1800px + : Big desktop
+
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+
+
+*/
+
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == smll{
+      @media only screen and (min-width: 31.25em) {@content}; //500px/16
+  }
+  @if $breakpoint == mdm{
+      @media only screen and (min-width: 45em) {@content}; //720px
+  }
+  @if $breakpoint == lg{
+      @media only screen and (min-width:  64em) {@content}; //1024px
+  }
+  @if $breakpoint == xlg{
+      @media only screen and (min-width: 80em) {@content}; //1280px
+  }
+  @if $breakpoint == hg{
+    @media only screen and (min-width: 120em) {@content}; //1920px
+}
+}
+
 html,
 body {
   height: 100%;
-  font-size: 62.5%;
+  font-size: 30%;
   color: var(--color-text);
+
+  @include respond(smll){ 
+    font-size: 40%;
+  }
+
+  @include respond(mdm){ 
+    font-size: 62.5%;
+  }
+
+  @include respond(xlg){ 
+    font-size: 70%; 
+  }
+
+  @include respond(hg){
+    font-size: 75%;
+  }
 }
 
 h1 {
@@ -37,18 +104,34 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+
+  @include respond(lg){ 
+    flex-direction: row;
+  }
 }
 
 aside {
-  flex: 1 0 25%;
+  flex: 1 0 10%;
   display: flex;
   flex-direction: column;
+
+  @include respond(lg){ 
+    flex: 1 0 25%;
+  }
 }
 
 header {
   flex: 1 0 40%;
-  display: flex;
   flex-direction: column;
+
+  display: none;
+  visibility: hidden;
+
+  @include respond(lg){ 
+    display: flex;
+    visibility: visible;
+  }
 }
 
 .header-picture {
@@ -59,20 +142,21 @@ header {
 }
 
 .img {
-  background-color: red;
-  width: 23rem;
-  height: 23rem;
+  background-color: red; 
   border-radius: 120rem;
+  width: 15rem;
+  height: 15rem;
   box-shadow: var(--shadow-dark-2);
   transition: all 1s;
   &:hover {
     transform: translateY(-2rem);
   }
+
 }
 
 .header-social {
   flex: 1 0 30%;
-  background-color: black;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,62 +171,95 @@ header {
 
 .header-social li {
   flex: 1 0 0;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  width: 5rem;
-  height: 5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 120rem;
+
+  @include respond(xlg){ 
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .header-social li i {
-  color: white;
-  font-size: 5rem;
+  color: #113C4A;
+  font-size: 3rem;
+  text-shadow: var(--shadow-dark);
   transition: all 0.4s;
   &:hover {
-    color: fuchsia;
+    color: #3F7B70;
     transform: scale(1.5);
+  }
+
+
+  @include respond(xlg){ 
+    font-size: 4rem;
   }
 }
 
 nav {
-  font-size: 3rem;
-  color: black;
-  text-align: right;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
   flex: 1 0 60%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+
+  @include respond(lg){ 
+    text-align: right;
+    justify-content: flex-end;
+  }
 }
 
 nav ul {
-  width: 80%;
+  width: 100%;
   list-style: none;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  
+    @include respond(lg){ 
+      width: 80%;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+    }
 }
 
 nav ul li {
-  letter-spacing: 0.3rem;
-  padding: 0.6rem;
-  width: 15rem;
-  margin: 0.7rem;
-  margin-right: 3rem;
+  letter-spacing: 0.1rem;
+  padding: 0.1rem;
+  margin: 0.2rem;
+
   transition: all 1s;
+  
   &:hover {
     color: fuchsia;
     text-decoration: underline;
   }
+
+  @include respond(lg){ 
+    letter-spacing: 0.3rem;
+    padding: 0.6rem;
+    margin: 0.7rem;
+    margin-right: 3rem;
+    width: 15rem;
+  }
 }
 
 nav ul li a {
-  color: grey;
+  color: var(--color-text-nav);
   text-decoration: none;
 }
 
 main {
   font-size: 3rem;
-  flex: 1 0 75%;
+  flex: 1 0 90%;
   position: relative;
   background-color: rgba(129, 194, 255, 0.7);
   color: white;
@@ -151,6 +268,10 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @include respond(lg){ 
+    flex: 1 0 75%;
+  }
 }
 
 main iframe {
@@ -175,9 +296,18 @@ main iframe {
   z-index: -1;
   opacity: 0.65;
   overflow: hidden;
+  display: none;
+  visibility: hidden;
   &__content {
     height: 100%;
     width: 100%;
     object-fit: cover;
   }
+
+
+  @include respond(lg){ 
+    visibility: visible;
+    display: initial;
+  }
+  
 }

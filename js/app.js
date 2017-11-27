@@ -6,39 +6,35 @@ $(document).ready(function() {
     //c.style.transition = "all 3s";
   }
 
+  function transitionFade(path){
+    $(".content").fadeOut("slow", function() {
+      c.src = path;
+    });
+    $(".content").fadeIn("slow");
+  }
+
   Path.map("#/home")
     .to(function() {
-      $(".content").fadeOut("slow", function() {
-        c.src = "home.html";
-      });
-      $(".content").fadeIn("slow");
+      transitionFade("home.html");
+      $('.content').addClass="home";
     })
     .enter(clearPanel);
 
   Path.map("#/projects")
     .to(function() {
-      $(".content").fadeOut("slow", function() {
-        c.src = "projects.html";
-      });
-      $(".content").fadeIn("slow");
+      transitionFade("projects.html");
     })
     .enter(clearPanel);
 
   Path.map("#/about")
     .to(function() {
-      $(".content").fadeOut("slow", function() {
-        c.src = "about.html";
-      });
-      $(".content").fadeIn("slow");
+      transitionFade("about.html");
     })
     .enter(clearPanel);
 
   Path.map("#/contact")
     .to(function() {
-      $(".content").fadeOut("slow", function() {
-        c.src = "contact.html";
-      });
-      $(".content").fadeIn("slow");
+      transitionFade("contact.html");
     })
     .enter(clearPanel);
 
