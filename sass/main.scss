@@ -10,7 +10,7 @@
   --color-text: #a5a7ba;
   --color-text-nav: #3c3f42;
   --color-white: #e6e2dd;
-  --color-nav: #F1F1F1;
+  --color-nav: #f1f1f1;
   --color-gradient-1: #30cfd0;
   --color-gradient-2: #330867;
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.5);
@@ -22,7 +22,6 @@ $color-gradient-1: #30cfd0;
 $color-gradient-2: #330867;
 
 /* BREAKPOINTS */
-
 
 /*
 300-500
@@ -57,33 +56,28 @@ $breakpoint argument choices:
 @mixin respond($breakpoint) {
   @if $breakpoint==smll {
     @media only screen and (min-width: 31.25em) {
-      @content
-    }
-    ; //500px/16
+      @content;
+    } //500px/16
   }
   @if $breakpoint==mdm {
     @media only screen and (min-width: 45em) {
-      @content
-    }
-    ; //720px
+      @content;
+    } //720px
   }
   @if $breakpoint==lg {
     @media only screen and (min-width: 64em) {
-      @content
-    }
-    ; //1024px
+      @content;
+    } //1024px
   }
   @if $breakpoint==xlg {
     @media only screen and (min-width: 80em) {
-      @content
-    }
-    ; //1280px
+      @content;
+    } //1280px
   }
   @if $breakpoint==hg {
     @media only screen and (min-width: 120em) {
-      @content
-    }
-    ; //1920px
+      @content;
+    } //1920px
   }
 }
 
@@ -115,7 +109,7 @@ h2 {
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 400;
   line-height: 1.6;
   background-size: cover;
@@ -173,7 +167,6 @@ header {
     width: 18rem;
     height: 18rem;
   }
-
 }
 
 .header-social {
@@ -285,13 +278,18 @@ nav ul li {
 nav ul li a {
   color: var(--color-text-nav);
   text-decoration: none;
+  border: 0.1rem solid black;
+  padding: 1rem;
+  @include respond(lg) {
+    border: 0;
+  }
 }
 
 main {
   font-size: 3rem;
   flex: 1 0 90%;
   position: relative;
-  //background-color: rgba(129, 194, 255, 0.7); 
+  //background-color: rgba(129, 194, 255, 0.7);
   //background-image: linear-gradient(to right bottom, var(--color-gradient-1), var(--color-gradient-2));
   background-image: linear-gradient(
     to right bottom,

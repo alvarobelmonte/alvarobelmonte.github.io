@@ -9,7 +9,7 @@
   --color-text: #a5a7ba;
   --color-text-nav: #3c3f42;
   --color-white: #e6e2dd;
-  --color-nav: #F1F1F1;
+  --color-nav: #f1f1f1;
   --color-gradient-1: #30cfd0;
   --color-gradient-2: #330867;
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.5);
@@ -72,7 +72,7 @@ h2 {
   font-size: 3rem; }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 400;
   line-height: 1.6;
   background-size: cover;
@@ -218,7 +218,12 @@ nav ul li {
 
 nav ul li a {
   color: var(--color-text-nav);
-  text-decoration: none; }
+  text-decoration: none;
+  border: 0.1rem solid black;
+  padding: 1rem; }
+  @media only screen and (min-width: 64em) {
+    nav ul li a {
+      border: 0; } }
 
 main {
   font-size: 3rem;
