@@ -151,17 +151,11 @@ header {
 }
 
 .img {
-  background-color: red;
-  border-radius: 2rem;
+  border-radius: 120rem;
   width: 15rem;
   height: 15rem;
   box-shadow: var(--shadow-medium);
   transition: all 0.5s;
-
-  &:hover {
-    transform: scale(0.8, 0.8);
-    border-radius: 120rem;
-  }
 
   @include respond(hg) {
     width: 18rem;
