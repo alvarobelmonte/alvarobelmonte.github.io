@@ -1,0 +1,54 @@
+main {
+  font-size: 3rem;
+  flex: 1 0 90%;
+  position: relative;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-gradient-1, 0.5),
+    rgba($color-gradient-2, 0.5)
+  );
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include respond(lg) {
+    flex: 1 0 75%;
+  }
+}
+
+main iframe {
+  width: 70%;
+  height: 70%;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-medium);
+}
+
+.iframe-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.65;
+  overflow: hidden;
+  display: none;
+  visibility: hidden;
+  &__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  @include respond(lg) {
+    visibility: visible;
+    display: initial;
+  }
+}

@@ -1,0 +1,54 @@
+nav {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  flex: 1 0 60%;
+  display: flex;
+  justify-content: space-between;
+  @include respond(lg) {
+    text-align: right;
+    justify-content: flex-end;
+  }
+}
+
+nav ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  @include respond(lg) {
+    width: 80%;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+  }
+}
+
+nav ul li {
+  letter-spacing: 0.1rem;
+  margin: 0.2rem;
+  transition: all 1s;
+  &:hover {
+    text-decoration: underline;
+  }
+  @include respond(lg) {
+    letter-spacing: 0.3rem;
+    padding: 0.6rem;
+    margin: 0.7rem;
+    margin-right: 3rem;
+    width: 15rem;
+  }
+}
+
+nav ul li a {
+  color: var(--color-text-nav);
+  text-decoration: none;
+  border: 0.1rem solid black;
+  padding: 0.5rem;
+  @include respond(lg) {
+    border: 0;
+    padding: 0;
+  }
+}

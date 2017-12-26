@@ -1,0 +1,59 @@
+/* BREAKPOINTS */
+
+/*
+300-500
+720-770
+1024
+1280
+1600
+1920
+*/
+
+//MEDIA QUERY MANAGER
+
+/*
+0 - 600px: Pjone
+600 - 900px: Tablet portrait
+900 - 1200px: Tablet landscape
+[1200 1800px] is where normal styles apply
+1800px + : Big desktop
+
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+
+
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint==smll {
+    @media only screen and (min-width: 31.25em) {
+      @content;
+    } //500px/16
+  }
+  @if $breakpoint==mdm {
+    @media only screen and (min-width: 45em) {
+      @content;
+    } //720px
+  }
+  @if $breakpoint==lg {
+    @media only screen and (min-width: 64em) {
+      @content;
+    } //1024px
+  }
+  @if $breakpoint==xlg {
+    @media only screen and (min-width: 80em) {
+      @content;
+    } //1280px
+  }
+  @if $breakpoint==hg {
+    @media only screen and (min-width: 120em) {
+      @content;
+    } //1920px
+  }
+}
