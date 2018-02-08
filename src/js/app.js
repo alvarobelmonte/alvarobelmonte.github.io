@@ -15,26 +15,26 @@ $(document).ready(function() {
 
   Path.map("#/home")
     .to(function() {
-      transitionFade("pages/home.html");
+      transitionFade("home.html");
       $('.content').addClass="home";
     })
     .enter(clearPanel);
 
   Path.map("#/projects")
     .to(function() {
-      transitionFade("pages/projects.html");
+      transitionFade("projects.html");
     })
     .enter(clearPanel);
 
   Path.map("#/about")
     .to(function() {
-      transitionFade("pages/about.html");
+      transitionFade("about.html");
     })
     .enter(clearPanel);
 
   Path.map("#/contact")
     .to(function() {
-      transitionFade("pages/contact.html");
+      transitionFade("contact.html");
     })
     .enter(clearPanel);
 
