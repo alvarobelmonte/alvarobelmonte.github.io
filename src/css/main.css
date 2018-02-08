@@ -1,0 +1,294 @@
+:root {
+  --color-text: #a5a7ba;
+  --color-text-nav: #3c3f42;
+  --color-white: #e6e2dd;
+  --color-nav: #f1f1f1;
+  --color-gradient-1: #30cfd0;
+  --color-gradient-2: #330867;
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.5);
+  --shadow-medium: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.1); }
+
+/* BREAKPOINTS */
+/*
+300-500
+720-770
+1024
+1280
+1600
+1920
+*/
+/*
+0 - 600px: Pjone
+600 - 900px: Tablet portrait
+900 - 1200px: Tablet landscape
+[1200 1800px] is where normal styles apply
+1800px + : Big desktop
+
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+
+
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html,
+body {
+  height: 100%;
+  font-size: 50%;
+  color: var(--color-text);
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  line-height: 1.6; }
+  @media only screen and (min-width: 31.25em) {
+    html,
+    body {
+      font-size: 55%; } }
+  @media only screen and (min-width: 45em) {
+    html,
+    body {
+      font-size: 62.5%; } }
+  @media only screen and (min-width: 80em) {
+    html,
+    body {
+      font-size: 70%; } }
+  @media only screen and (min-width: 120em) {
+    html,
+    body {
+      font-size: 75%; } }
+
+h1 {
+  font-size: 3rem; }
+  @media only screen and (min-width: 64em) {
+    h1 {
+      font-size: 12rem; } }
+
+h2 {
+  font-size: 2rem; }
+  @media only screen and (min-width: 64em) {
+    h2 {
+      font-size: 4rem; } }
+
+aside {
+  background-color: var(--color-nav);
+  flex: 1 0 12%;
+  display: flex;
+  flex-direction: column; }
+  @media only screen and (min-width: 64em) {
+    aside {
+      flex: 1 0 25%; } }
+
+header {
+  flex: 1 0 40%;
+  flex-direction: column;
+  text-align: center; }
+  @media only screen and (min-width: 64em) {
+    header {
+      display: flex;
+      visibility: visible; } }
+
+.header-title {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  background-color: var(--color-text-nav);
+  color: var(--color-white);
+  letter-spacing: 0.5rem; }
+  @media only screen and (min-width: 64em) {
+    .header-title {
+      font-size: 1.3rem; } }
+  @media only screen and (min-width: 80em) {
+    .header-title {
+      font-size: 1.5rem; } }
+
+.header-picture {
+  flex: 1 0 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  visibility: hidden; }
+  @media only screen and (min-width: 64em) {
+    .header-picture {
+      display: flex;
+      visibility: visible; } }
+
+.img {
+  border-radius: 120rem;
+  width: 15rem;
+  height: 15rem;
+  box-shadow: var(--shadow-medium);
+  transition: all 0.5s; }
+  @media only screen and (min-width: 120em) {
+    .img {
+      width: 18rem;
+      height: 18rem; } }
+
+.header-social {
+  flex: 1 0 30%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  visibility: hidden; }
+  @media only screen and (min-width: 64em) {
+    .header-social {
+      display: flex;
+      visibility: visible; } }
+
+.header-social ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.header-social li {
+  flex: 1 0 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 120rem; }
+  @media only screen and (min-width: 80em) {
+    .header-social li {
+      margin-left: 2rem;
+      margin-right: 2rem; } }
+  @media only screen and (min-width: 120em) {
+    .header-social li {
+      margin-left: 3rem;
+      margin-right: 3rem; } }
+
+/** ICONS **/
+.header-social li i {
+  color: var(--color-gradient-2);
+  font-size: 2rem;
+  transition: all 0.4s; }
+  .header-social li i:hover {
+    color: var(--color-gradient-1);
+    transform: scale(1.5);
+    text-shadow: var(--shadow-medium); }
+  @media only screen and (min-width: 64em) {
+    .header-social li i {
+      font-size: 3rem; } }
+  @media only screen and (min-width: 80em) {
+    .header-social li i {
+      font-size: 3.5rem; } }
+  @media only screen and (min-width: 120em) {
+    .header-social li i {
+      font-size: 4rem; } }
+
+main {
+  font-size: 3rem;
+  flex: 1 0 90%;
+  position: relative;
+  background-image: linear-gradient(to right bottom, rgba(48, 207, 208, 0.5), rgba(51, 8, 103, 0.5));
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  @media only screen and (min-width: 64em) {
+    main {
+      flex: 1 0 75%; } }
+
+main iframe {
+  width: 70%;
+  height: 70%;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-medium); }
+
+.iframe-content {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.65;
+  overflow: hidden;
+  display: none;
+  visibility: hidden; }
+  .bg-video__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+  @media only screen and (min-width: 64em) {
+    .bg-video {
+      visibility: visible;
+      display: initial; } }
+
+nav {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  flex: 1 0 60%;
+  display: flex;
+  justify-content: space-between; }
+  @media only screen and (min-width: 64em) {
+    nav {
+      text-align: right;
+      justify-content: flex-end; } }
+
+nav ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around; }
+  @media only screen and (min-width: 64em) {
+    nav ul {
+      width: 80%;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center; } }
+
+nav ul li {
+  letter-spacing: 0.1rem;
+  margin: 0.2rem;
+  transition: all 1s; }
+  nav ul li:hover {
+    text-decoration: underline; }
+  @media only screen and (min-width: 64em) {
+    nav ul li {
+      letter-spacing: 0.3rem;
+      padding: 0.6rem;
+      margin: 0.7rem;
+      margin-right: 3rem;
+      width: 15rem; } }
+
+nav ul li a {
+  color: var(--color-text-nav);
+  text-decoration: none;
+  border: 0.1rem solid black;
+  padding: 0.5rem; }
+  @media only screen and (min-width: 64em) {
+    nav ul li a {
+      border: 0;
+      padding: 0; } }
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; }
+  @media only screen and (min-width: 64em) {
+    body {
+      flex-direction: row; } }
