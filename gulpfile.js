@@ -1,62 +1,63 @@
 /**
  * Created by AlvaroBelmonte on 30/04/2016.
  */
-var gulp        = require('gulp'),
-del         = require('del'),
-browserSync = require('browser-sync').create(),
-concat      = require('gulp-concat'),
-imagemin    = require('gulp-imagemin'),
-jshint      = require('gulp-jshint'),
-stylish     = require('jshint-stylish'),
-sass        = require('gulp-sass'),
-sourcemaps  = require('gulp-sourcemaps'),
-uglify      = require('gulp-uglify');
+var gulp = require('gulp'),
+    del = require('del'),
+    browserSync = require('browser-sync').create(),
+    concat = require('gulp-concat'),
+    imagemin = require('gulp-imagemin'),
+    jshint = require('gulp-jshint'),
+    stylish = require('jshint-stylish'),
+    sass = require('gulp-sass'),
+    sourcemaps = require('gulp-sourcemaps'),
+    uglify = require('gulp-uglify'),
+    deploy = require('gulp-gh-pages');
 
 
 // Definición de direcotrios origen
 var srcPaths = {
-images:   'src/img/',
-scripts:  'src/js/',
-styles:   'src/sass/',
-files:    'src/',
+    images: 'src/img/',
+    scripts: 'src/js/',
+    styles: 'src/sass/',
+    files: 'src/',
 };
 
 
 // Definición de directorios destino
 var distPaths = {
-images:   'dist/img/',
-scripts:  'dist/js/',
-styles:   'dist/css/',
-files:    'dist/',
+    images: 'dist/img/',
+    scripts: 'dist/js/',
+    styles: 'dist/css/',
+    files: 'dist/',
 };
 
 
 // Limpieza del directorio dist
-gulp.task('clean', function(cb) {
-del([ distPaths.pages+'pages/*.html', distPaths.files+'*.html', distPaths.images+'**/*', distPaths.scripts+'*.js', distPaths.styles+'*.css'], cb);
+gulp.task('clean', function (cb) {
+    del([distPaths.pages + 'pages/*.html', distPaths.files + '*.html', distPaths.images + '**/*', distPaths.scripts + '*.js', distPaths.styles + '*.css'], cb);
 });
 
 
 // Copia de los cambios en los ficheros html en el directorio dist.
-gulp.task('html', function() {
-return gulp.src([srcPaths.files+'*.html', srcPaths.files+'pages/*.html'])
-    .pipe(gulp.dest(distPaths.files))
-    .pipe(browserSync.stream());
+gulp.task('html', function () {
+    return gulp.src([srcPaths.files + '*.html', srcPaths.files + 'pages/*.html'])
+        .pipe(gulp.dest(distPaths.files))
+        .pipe(browserSync.stream());
 });
 
 
 /*
 * Procesamiento de imágenes para comprimir / optimizar las mismas.
 */
-gulp.task('imagemin', function() {
-return gulp.src([srcPaths.images+'**/*'])
-    .pipe(imagemin({
-        progressive: true,
-        interlaced: true,
-        svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
-    }))
-    .pipe(gulp.dest(distPaths.images))
-    .pipe(browserSync.stream());
+gulp.task('imagemin', function () {
+    return gulp.src([srcPaths.images + '**/*'])
+        .pipe(imagemin({
+            progressive: true,
+            interlaced: true,
+            svgoPlugins: [{ removeUnknownsAndDefaults: false }, { cleanupIDs: false }]
+        }))
+        .pipe(gulp.dest(distPaths.images))
+        .pipe(browserSync.stream());
 });
 
 
@@ -65,13 +66,13 @@ return gulp.src([srcPaths.images+'**/*'])
 * CSS correspondientes. Los sourcemaps en este caso se generan dentro
 * del propio fichero.
 */
-gulp.task('css', function() {
-return gulp.src([srcPaths.styles+'**/*.scss'])
-    .pipe(sourcemaps.init())
-    .pipe(sass())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(distPaths.styles))
-    .pipe(browserSync.stream());
+gulp.task('css', function () {
+    return gulp.src([srcPaths.styles + '**/*.scss'])
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(distPaths.styles))
+        .pipe(browserSync.stream());
 });
 
 
@@ -80,10 +81,10 @@ return gulp.src([srcPaths.styles+'**/*.scss'])
 * Este proceso es previo al tratamiento de los ficheros JS para la
 * obtención del fichero concatenado y minificado.
 */
-gulp.task('lint', function() {
-return gulp.src([srcPaths.scripts+'**/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
+gulp.task('lint', function () {
+    return gulp.src([srcPaths.scripts + '**/*.js'])
+        .pipe(jshint())
+        .pipe(jshint.reporter(stylish));
 });
 
 
@@ -92,17 +93,20 @@ return gulp.src([srcPaths.scripts+'**/*.js'])
 * final único y minificado. Los sourcemaps se generan en una
 * carpeta independiente en vez de en el propio fichero.
 */
-gulp.task('js', ['lint'], function() {
-return gulp.src([srcPaths.scripts+'app.js', srcPaths.scripts+'*.js'])
-    .pipe(sourcemaps.init())
-    .pipe(concat('all.min.js'))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('maps'))
-    .pipe(gulp.dest(distPaths.scripts))
-    .pipe(browserSync.stream());
+gulp.task('js', ['lint'], function () {
+    return gulp.src([srcPaths.scripts + 'app.js', srcPaths.scripts + '*.js'])
+        .pipe(sourcemaps.init())
+        .pipe(concat('all.min.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('maps'))
+        .pipe(gulp.dest(distPaths.scripts))
+        .pipe(browserSync.stream());
 });
 
-
+gulp.task('deploy', function () {
+    return gulp.src("./dist/**/*")
+        .pipe(deploy())
+});
 /*
 * Tarea para lanzar el proceso de servidor mediante BrowserSync.
 * Antes de comenzar la propia tarea ejecuta las tareas de las que tiene
@@ -117,19 +121,19 @@ return gulp.src([srcPaths.scripts+'app.js', srcPaths.scripts+'*.js'])
 * Adicionalmente se crean los watchers para procesar los cambios que se
 * puedan producir en los archivos sensibles para el proyecto.
 */
-gulp.task('serve', ['html', 'imagemin', 'css', 'js'], function() {
-browserSync.init({
-    server: "./dist"
-});
+gulp.task('serve', ['html', 'imagemin', 'css', 'js'], function () {
+    browserSync.init({
+        server: "./dist"
+    });
 
-gulp.watch(srcPaths.files+'*.html', ['html']);
-gulp.watch(srcPaths.images+'**/*', ['imagemin']);
-gulp.watch(srcPaths.styles+'**/*.scss', ['css']);
-gulp.watch(srcPaths.scripts+'**/*.js', ['js']);
+    gulp.watch(srcPaths.files + '*.html', ['html']);
+    gulp.watch(srcPaths.images + '**/*', ['imagemin']);
+    gulp.watch(srcPaths.styles + '**/*.scss', ['css']);
+    gulp.watch(srcPaths.scripts + '**/*.js', ['js']);
 });
 
 /*
 * Definción de la tarea por defecto que en este caso limpia el directorio destino
 * y lanza la tarea de servidor.
 */
-gulp.task('default', ['clean', 'serve'], function() {});
+gulp.task('default', ['clean', 'serve'], function () { });
