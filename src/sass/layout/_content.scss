@@ -16,6 +16,7 @@ main {
   @include respond(lg) {
     flex: 1 0 75%;
   }
+  
 }
 
 main iframe {
@@ -26,9 +27,11 @@ main iframe {
 }
 
 .iframe-content {
-  display: flex;
+  /*display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
+  text-align: center;
+  padding: 4rem;
 }
 
 .bg-video {
