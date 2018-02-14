@@ -23,5 +23,8 @@
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
     "node-sass": "^4.7.2"
+  },
+  "dependencies": {
+    "gift": "^0.10.2"
   }
 }

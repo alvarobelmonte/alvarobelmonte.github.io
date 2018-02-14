@@ -110,8 +110,10 @@ gulp.task("js", ["lint"], function() {
     .pipe(browserSync.stream());
 });
 
-var options = { 
-    branch: "master"};
+var options = {
+  remoteUrl: "https://github.com/alvarobelmonte/alvarobelmonte.github.io.git",
+  branch: "master"
+};
 
 gulp.task("deploy", function() {
   return gulp.src("./dist/**/*").pipe(deploy(options));

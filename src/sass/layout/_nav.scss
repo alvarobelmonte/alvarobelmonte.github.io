@@ -30,9 +30,6 @@ nav ul li {
   letter-spacing: 0.1rem;
   margin: 0.2rem;
   transition: all 1s;
-  &:hover {
-    text-decoration: underline;
-  }
   @include respond(lg) {
     letter-spacing: 0.3rem;
     padding: 0.6rem;
@@ -45,10 +42,18 @@ nav ul li {
 nav ul li a {
   color: var(--color-text-nav);
   text-decoration: none;
-  border: 0.1rem solid black;
   padding: 0.5rem;
+  &:hover {
+    background-color: var(--color-text-nav);
+    color: var(--color-white);
+  }
   @include respond(lg) {
     border: 0;
     padding: 0;
+    &:hover {
+      text-decoration: underline;
+      background-color: transparent;
+      color: var(--color-text-nav);
+    }
   }
 }

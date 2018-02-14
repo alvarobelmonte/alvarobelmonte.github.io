@@ -13,11 +13,10 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   @include respond(lg) {
     flex: 1 0 75%;
   }
-  
 }
 
 main iframe {
@@ -25,7 +24,6 @@ main iframe {
   height: 70%;
   background-color: var(--color-white);
   box-shadow: var(--shadow-medium);
-  
 }
 
 .iframe-content {
