@@ -6,8 +6,9 @@
 }
 
 .technologies {
+  padding-top: 5rem;
   & img {
-    width: 6rem;
+    width: 7rem;
     height: 6rem;
     padding: 1rem;
     @include respond(lg) {
@@ -15,5 +16,17 @@
       height: 18rem;
     }
   }
+  & .ionic-img{
+    width: 12rem;
+  }
+
+  & .angularjs-img{
+    width: 12rem;
+  }
+
+  & .gulp-img{
+    width: 5rem;
+  }
+
 }
 

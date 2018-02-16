@@ -20,12 +20,13 @@ main {
 }
 
 main iframe {
-  width: 70%;
+  width: 80%;
   min-height: 90%;
   background-color: var(--color-white);
   box-shadow: var(--shadow-medium);
   @include respond(lg) {
     min-height: 70%;
+    width: 70%
   }
 }
 
