@@ -1,0 +1,12 @@
+.contact-text {
+  padding: 3rem;
+  font-size: 1.5rem;
+  @include respond(lg) {
+    font-size: 2.5rem;
+  }
+}
+
+.email {
+    font-size: 3rem;
+    color: var(--color-gradient-2);
+}
