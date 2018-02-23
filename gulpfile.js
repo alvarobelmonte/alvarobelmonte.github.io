@@ -9,6 +9,7 @@ var gulp = require("gulp"),
   sourcemaps = require("gulp-sourcemaps"),
   uglify = require("gulp-uglify"),
   deploy = require("gulp-gh-pages");
+  cssnano = require('gulp-cssnano');
 
 // Definición de directorios origen
 var srcPaths = {
@@ -77,6 +78,7 @@ gulp.task("css", function() {
     .src([srcPaths.styles + "**/*.scss"])
     .pipe(sourcemaps.init())
     .pipe(sass())
+    .pipe(cssnano())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(distPaths.styles))
     .pipe(browserSync.stream());
@@ -138,7 +140,7 @@ gulp.task("serve", ["html", "imagemin", "css", "js"], function() {
     server: "./dist"
   });
 
-  gulp.watch(srcPaths.files + "*.html", ["html"]);
+  gulp.watch(srcPaths.files + "**/*.html", ["html"]);
   gulp.watch(srcPaths.images + "**/*", ["imagemin"]);
   gulp.watch(srcPaths.styles + "**/*.scss", ["css"]);
   gulp.watch(srcPaths.scripts + "**/*.js", ["js"]);
