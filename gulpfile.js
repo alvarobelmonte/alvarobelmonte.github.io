@@ -10,6 +10,7 @@ var gulp = require("gulp"),
   uglify = require("gulp-uglify"),
   deploy = require("gulp-gh-pages");
   cssnano = require('gulp-cssnano');
+  autoprefixer = require('gulp-autoprefixer');
 
 // Definición de directorios origen
 var srcPaths = {
@@ -79,6 +80,10 @@ gulp.task("css", function() {
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(cssnano())
+    .pipe(autoprefixer({
+      browsers: ['last 10 versions'],
+      cascade: false
+    }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(distPaths.styles))
     .pipe(browserSync.stream());
